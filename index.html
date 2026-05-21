@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hands-free Recipe — Garlic Butter Pasta</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <article class="recipe">
+      <header class="recipe-header">
+        <p class="kicker">Hands-free demo</p>
+        <h1>Garlic Butter Pasta</h1>
+        <p class="subtitle">
+          Show a thumbs-up to scroll up, thumbs-down to scroll down. Hold the
+          gesture for a moment so it doesn't fire accidentally. No need to
+          touch the laptop with messy hands.
+        </p>
+        <dl class="meta">
+          <div><dt>Serves</dt><dd>2</dd></div>
+          <div><dt>Time</dt><dd>20 min</dd></div>
+          <div><dt>Difficulty</dt><dd>Easy</dd></div>
+        </dl>
+      </header>
+
+      <section class="ingredients">
+        <h2>Ingredients</h2>
+        <ul>
+          <li>200 g spaghetti</li>
+          <li>4 cloves garlic, thinly sliced</li>
+          <li>4 tbsp unsalted butter</li>
+          <li>2 tbsp olive oil</li>
+          <li>1/2 tsp red pepper flakes</li>
+          <li>1/4 cup pasta water (reserved)</li>
+          <li>Handful of flat-leaf parsley, chopped</li>
+          <li>Grated Parmesan, to finish</li>
+          <li>Salt and black pepper</li>
+        </ul>
+      </section>
+
+      <section id="step-1" class="step" data-step="1">
+        <h2>Step 1 — Boil the pasta</h2>
+        <p>
+          Bring a large pot of well-salted water to a rolling boil. Add the
+          spaghetti and cook to one minute shy of the package directions
+          (you'll finish it in the pan). Before draining, scoop out about a
+          cup of starchy pasta water and set it aside.
+        </p>
+        <p>
+          Tip: the pasta water is liquid gold for the sauce — don't skip
+          reserving it.
+        </p>
+      </section>
+
+      <section id="step-2" class="step" data-step="2">
+        <h2>Step 2 — Bloom the garlic</h2>
+        <p>
+          While the pasta cooks, set a wide skillet over medium-low heat. Add
+          the olive oil and butter. As soon as the butter is foamy, add the
+          sliced garlic and red pepper flakes.
+        </p>
+        <p>
+          Cook gently for 2–3 minutes, stirring often, until the garlic is
+          pale gold and smells nutty. Do <em>not</em> let it brown — burnt
+          garlic will turn the whole dish bitter.
+        </p>
+      </section>
+
+      <section id="step-3" class="step" data-step="3">
+        <h2>Step 3 — Build the sauce</h2>
+        <p>
+          Lower the heat. Pour in about a quarter cup of the reserved pasta
+          water and swirl the pan to emulsify with the butter. The sauce
+          should look glossy and slightly thickened, like a loose cream.
+        </p>
+        <p>
+          Season with a pinch of salt and a few cracks of black pepper. Taste
+          and adjust — it should taste a little under-seasoned at this point
+          because the pasta will absorb more.
+        </p>
+      </section>
+
+      <section id="step-4" class="step" data-step="4">
+        <h2>Step 4 — Toss everything together</h2>
+        <p>
+          Use tongs to lift the pasta straight from the pot into the skillet
+          (a little extra water clinging to it is fine). Toss vigorously over
+          medium heat for about a minute so the noodles soak up the sauce.
+        </p>
+        <p>
+          If it looks dry, splash in another tablespoon or two of pasta water.
+          If it looks loose, keep tossing — it'll tighten up as the starch
+          hydrates.
+        </p>
+      </section>
+
+      <section id="step-5" class="step" data-step="5">
+        <h2>Step 5 — Finish and serve</h2>
+        <p>
+          Off the heat, scatter in the chopped parsley and a generous shower
+          of Parmesan. Toss one more time. Taste, adjust salt and pepper, and
+          plate immediately into warm bowls.
+        </p>
+        <p>
+          Top with a little more Parmesan, a drizzle of good olive oil, and
+          eat right away. Pasta waits for no one.
+        </p>
+      </section>
+
+      <footer class="recipe-footer">
+        <p>That's it. Wash your hands and enjoy.</p>
+      </footer>
+    </article>
+
+    <aside class="gesture-overlay" aria-live="polite">
+      <div class="overlay-header">
+        <span class="overlay-title">Gesture control</span>
+        <button id="toggle-btn" type="button" class="toggle-btn">Start camera</button>
+      </div>
+      <video id="preview" class="preview" playsinline muted></video>
+      <div id="status" class="status">Camera off</div>
+      <div class="legend">
+        <span title="Thumbs up">👍 scroll up</span>
+        <span title="Thumbs down">👎 scroll down</span>
+        <span title="Closed fist">✊ zoom in</span>
+        <span title="Open palm">🖐 zoom out</span>
+      </div>
+      <button id="save-log-btn" type="button" class="save-log-btn">
+        Save session log
+      </button>
+    </aside>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
