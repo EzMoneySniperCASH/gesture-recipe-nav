@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "Gesture Recipe Nav",
+  "version": "0.1.8",
+  "description": "Hands-free scroll and zoom on recipe pages using webcam gestures.",
+  "permissions": ["storage", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://*.allrecipes.com/*",
+    "https://*.seriouseats.com/*",
+    "https://*.bonappetit.com/*",
+    "https://www.nytimes.com/*",
+    "https://cooking.nytimes.com/*",
+    "https://*.foodnetwork.com/*",
+    "https://*.bbcgoodfood.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.allrecipes.com/*",
+        "https://*.seriouseats.com/*",
+        "https://*.bonappetit.com/*",
+        "https://www.nytimes.com/*",
+        "https://cooking.nytimes.com/*",
+        "https://*.foodnetwork.com/*",
+        "https://*.bbcgoodfood.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "page-runner.js",
+        "overlay.css",
+        "vendor/mediapipe/vision_bundle.mjs",
+        "vendor/mediapipe/gesture_recognizer.task",
+        "vendor/mediapipe/wasm/vision_wasm_internal.js",
+        "vendor/mediapipe/wasm/vision_wasm_internal.wasm",
+        "vendor/mediapipe/wasm/vision_wasm_nosimd_internal.js",
+        "vendor/mediapipe/wasm/vision_wasm_nosimd_internal.wasm"
+      ],
+      "matches": ["https://*/*"]
+    }
+  ],
+  "action": {
+    "default_title": "Gesture Recipe Nav",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

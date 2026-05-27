@@ -1,0 +1,25 @@
+{
+  "name": "gesture-recipe-nav-1",
+  "version": "1.0.0",
+  "description": "A hands-free recipe reader prototype. Show a hand gesture to your webcam to scroll or zoom the page — no need to touch the laptop with messy hands while you cook.",
+  "main": "main.js",
+  "scripts": {
+    "prepare:extension": "node scripts/prepare-extension.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzMoneySniperCASH/gesture-recipe-nav.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EzMoneySniperCASH/gesture-recipe-nav/issues"
+  },
+  "homepage": "https://github.com/EzMoneySniperCASH/gesture-recipe-nav#readme",
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.14"
+  }
+}
