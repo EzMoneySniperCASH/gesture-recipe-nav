@@ -11,14 +11,15 @@ const saveLogBtn = document.getElementById("save-log-btn");
 
 function scrollByViewport(direction) {
   window.scrollBy({
-    top: direction * window.innerHeight * 0.6,
+    top: direction * window.innerHeight * SCROLL_VIEWPORT_FRACTION,
     behavior: "smooth",
   });
 }
 
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 3;
-const ZOOM_STEP = 0.1;
+const ZOOM_STEP = 0.08;
+const SCROLL_VIEWPORT_FRACTION = 0.45;
 let zoomLevel = 1;
 
 function nudgeZoom(delta) {
@@ -162,12 +163,12 @@ toggleBtn.addEventListener("click", async () => {
           Closed_Fist: {
             handler: () => nudgeZoom(+ZOOM_STEP),
             repeatOnHold: true,
-            intervalMs: 250,
+            intervalMs: 350,
           },
           Open_Palm: {
             handler: () => nudgeZoom(-ZOOM_STEP),
             repeatOnHold: true,
-            intervalMs: 250,
+            intervalMs: 350,
           },
         },
       });

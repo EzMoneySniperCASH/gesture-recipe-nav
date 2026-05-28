@@ -6,8 +6,25 @@
   const SOURCE = "gesture-recipe-nav-page";
   const THRESHOLD = 0.7;
   const HOLD_FRAMES = 4;
-  const COOLDOWN_MS = 700;
-  const ZOOM_INTERVAL_MS = 250;
+  const COOLDOWN_MS = cfg.sensitivity?.scrollCooldownMs ?? 800;
+  const ZOOM_INTERVAL_MS = cfg.sensitivity?.zoomIntervalMs ?? 350;
+
+  let scrollCooldownMs = COOLDOWN_MS;
+  let zoomIntervalMs = ZOOM_INTERVAL_MS;
+
+  window.addEventListener("message", (event) => {
+    if (event.source !== window) return;
+    const data = event.data;
+    if (data?.source !== "gesture-recipe-nav-cmd") return;
+    if (data.type === "update-sensitivity") {
+      if (typeof data.scrollCooldownMs === "number") {
+        scrollCooldownMs = data.scrollCooldownMs;
+      }
+      if (typeof data.zoomIntervalMs === "number") {
+        zoomIntervalMs = data.zoomIntervalMs;
+      }
+    }
+  });
 
   const GESTURES = new Set([
     "Thumb_Up",
@@ -201,7 +218,7 @@
     const now = performance.now();
     const lastFire = lastFireAt.get(name) ?? 0;
     const repeat = name === "Closed_Fist" || name === "Open_Palm";
-    const interval = repeat ? ZOOM_INTERVAL_MS : COOLDOWN_MS;
+    const interval = repeat ? zoomIntervalMs : scrollCooldownMs;
 
     if (gestureStreak >= HOLD_FRAMES && now - lastFire >= interval) {
       lastFireAt.set(name, now);

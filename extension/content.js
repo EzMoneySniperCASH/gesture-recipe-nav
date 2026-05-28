@@ -50,6 +50,24 @@ overlay.innerHTML = `
       <span id="preview-idle-label" class="preview-idle-label">Camera off</span>
     </div>
     <div id="status" class="status status--idle">Press Start to enable gestures</div>
+    <section class="settings" aria-label="Scroll and zoom sensitivity">
+      <h3 class="settings-title">Adjust speed</h3>
+      <label class="setting-row">
+        <span class="setting-label">Scroll distance</span>
+        <input id="scroll-sensitivity" type="range" min="1" max="5" step="1" value="3" />
+        <span id="scroll-hint" class="setting-hint">Medium</span>
+      </label>
+      <label class="setting-row">
+        <span class="setting-label">Zoom amount</span>
+        <input id="zoom-sensitivity" type="range" min="1" max="5" step="1" value="3" />
+        <span id="zoom-hint" class="setting-hint">Medium</span>
+      </label>
+      <label class="setting-row">
+        <span class="setting-label">Zoom speed</span>
+        <input id="zoom-speed-sensitivity" type="range" min="1" max="5" step="1" value="3" />
+        <span id="zoom-speed-hint" class="setting-hint">Medium</span>
+      </label>
+    </section>
     <section class="gestures" aria-label="Gesture controls">
       <h3 class="gestures-title">Gestures</h3>
       <p class="gestures-tip">Hold each one steady for about half a second</p>
@@ -76,8 +94,29 @@ previewCtx.fillRect(0, 0, previewEl.width, previewEl.height);
 const statusEl = shadow.getElementById("status");
 const toggleBtn = shadow.getElementById("toggle-btn");
 const saveLogBtn = shadow.getElementById("save-log-btn");
+const scrollSlider = shadow.getElementById("scroll-sensitivity");
+const zoomSlider = shadow.getElementById("zoom-sensitivity");
+const zoomSpeedSlider = shadow.getElementById("zoom-speed-sensitivity");
+const scrollHint = shadow.getElementById("scroll-hint");
+const zoomHint = shadow.getElementById("zoom-hint");
+const zoomSpeedHint = shadow.getElementById("zoom-speed-hint");
 
 const STORAGE_KEY = "grn_ui";
+const SENSITIVITY_KEY = "grn_sensitivity";
+
+const SENSITIVITY_LABELS = ["Less", "Light", "Medium", "Strong", "More"];
+const SCROLL_FRACTIONS = [0.3, 0.38, 0.45, 0.52, 0.6];
+const ZOOM_STEPS = [0.05, 0.065, 0.08, 0.095, 0.11];
+const ZOOM_INTERVALS_MS = [500, 425, 350, 300, 250];
+const SCROLL_COOLDOWNS_MS = [950, 875, 800, 750, 700];
+
+const DEFAULT_SENSITIVITY = {
+  scroll: 3,
+  zoom: 3,
+  zoomSpeed: 3,
+};
+
+let sensitivity = { ...DEFAULT_SENSITIVITY };
 let collapsed = false;
 let dragOffsetX = 0;
 let dragOffsetY = 0;
@@ -197,20 +236,86 @@ window.addEventListener("resize", () => {
 
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 3;
-const ZOOM_STEP = 0.1;
 let zoomLevel = 1;
 let cameraOn = false;
 let starting = false;
 
-const runnerConfig = {
-  wasmRoot: chrome.runtime.getURL("vendor/mediapipe/wasm"),
-  modelUrl: chrome.runtime.getURL("vendor/mediapipe/gesture_recognizer.task"),
-  visionBundleUrl: chrome.runtime.getURL("vendor/mediapipe/vision_bundle.mjs"),
-};
+function levelIndex(level) {
+  return Math.min(5, Math.max(1, level)) - 1;
+}
+
+function getSensitivityValues() {
+  return {
+    scrollFraction: SCROLL_FRACTIONS[levelIndex(sensitivity.scroll)],
+    zoomStep: ZOOM_STEPS[levelIndex(sensitivity.zoom)],
+    zoomIntervalMs: ZOOM_INTERVALS_MS[levelIndex(sensitivity.zoomSpeed)],
+    scrollCooldownMs: SCROLL_COOLDOWNS_MS[levelIndex(sensitivity.scroll)],
+  };
+}
+
+function updateSensitivityHints() {
+  scrollHint.textContent = SENSITIVITY_LABELS[sensitivity.scroll - 1];
+  zoomHint.textContent = SENSITIVITY_LABELS[sensitivity.zoom - 1];
+  zoomSpeedHint.textContent = SENSITIVITY_LABELS[sensitivity.zoomSpeed - 1];
+}
+
+function applySensitivityFromSliders() {
+  sensitivity = {
+    scroll: Number(scrollSlider.value),
+    zoom: Number(zoomSlider.value),
+    zoomSpeed: Number(zoomSpeedSlider.value),
+  };
+  updateSensitivityHints();
+  chrome.storage.local.set({ [SENSITIVITY_KEY]: sensitivity });
+  pushSettingsToRunner();
+}
+
+function loadSensitivity() {
+  chrome.storage.local.get(SENSITIVITY_KEY, (result) => {
+    const saved = result[SENSITIVITY_KEY];
+    if (saved) {
+      sensitivity = { ...DEFAULT_SENSITIVITY, ...saved };
+    }
+    scrollSlider.value = String(sensitivity.scroll);
+    zoomSlider.value = String(sensitivity.zoom);
+    zoomSpeedSlider.value = String(sensitivity.zoomSpeed);
+    updateSensitivityHints();
+  });
+}
+
+function pushSettingsToRunner() {
+  if (!cameraOn) return;
+  const values = getSensitivityValues();
+  window.postMessage(
+    {
+      source: "gesture-recipe-nav-cmd",
+      type: "update-sensitivity",
+      scrollCooldownMs: values.scrollCooldownMs,
+      zoomIntervalMs: values.zoomIntervalMs,
+    },
+    "*",
+  );
+}
+
+function buildRunnerConfig() {
+  const values = getSensitivityValues();
+  return {
+    wasmRoot: chrome.runtime.getURL("vendor/mediapipe/wasm"),
+    modelUrl: chrome.runtime.getURL("vendor/mediapipe/gesture_recognizer.task"),
+    visionBundleUrl: chrome.runtime.getURL("vendor/mediapipe/vision_bundle.mjs"),
+    sensitivity: values,
+  };
+}
+
+scrollSlider.addEventListener("input", applySensitivityFromSliders);
+zoomSlider.addEventListener("input", applySensitivityFromSliders);
+zoomSpeedSlider.addEventListener("input", applySensitivityFromSliders);
+loadSensitivity();
 
 function scrollByViewport(direction) {
+  const { scrollFraction } = getSensitivityValues();
   window.scrollBy({
-    top: direction * window.innerHeight * 0.6,
+    top: direction * window.innerHeight * scrollFraction,
     behavior: "smooth",
   });
 }
@@ -221,6 +326,7 @@ function nudgeZoom(delta) {
 }
 
 function runGestureAction(name) {
+  const { zoomStep } = getSensitivityValues();
   switch (name) {
     case "Thumb_Up":
       scrollByViewport(-1);
@@ -229,10 +335,10 @@ function runGestureAction(name) {
       scrollByViewport(1);
       break;
     case "Closed_Fist":
-      nudgeZoom(+ZOOM_STEP);
+      nudgeZoom(+zoomStep);
       break;
     case "Open_Palm":
-      nudgeZoom(-ZOOM_STEP);
+      nudgeZoom(-zoomStep);
       break;
     default:
       break;
@@ -285,17 +391,20 @@ function setCameraUi(on) {
 
 function sendBackground(type) {
   return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage({ type, config: runnerConfig }, (response) => {
-      if (chrome.runtime.lastError) {
-        reject(new Error(chrome.runtime.lastError.message));
-        return;
-      }
-      if (response?.error) {
-        reject(new Error(response.error));
-        return;
-      }
-      resolve(response);
-    });
+    chrome.runtime.sendMessage(
+      { type, config: buildRunnerConfig() },
+      (response) => {
+        if (chrome.runtime.lastError) {
+          reject(new Error(chrome.runtime.lastError.message));
+          return;
+        }
+        if (response?.error) {
+          reject(new Error(response.error));
+          return;
+        }
+        resolve(response);
+      },
+    );
   });
 }
 
@@ -353,6 +462,7 @@ function downloadLog() {
   const payload = {
     participant: participantId,
     page_url: location.href,
+    sensitivity,
     session_start_iso: new Date(
       Date.now() - (performance.now() - sessionStart),
     ).toISOString(),

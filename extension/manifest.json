@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Gesture Recipe Nav",
-  "version": "0.1.8",
+  "version": "0.2.1",
   "description": "Hands-free scroll and zoom on recipe pages using webcam gestures.",
   "permissions": ["storage", "scripting"],
   "background": {

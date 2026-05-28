@@ -234,6 +234,56 @@
   color: #b42318;
 }
 
+.settings {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.settings-title {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+.setting-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2px 8px;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: default;
+}
+
+.setting-row:last-child {
+  margin-bottom: 0;
+}
+
+.setting-label {
+  font-size: 11px;
+  color: #444;
+  font-weight: 500;
+}
+
+.setting-hint {
+  font-size: 10px;
+  color: #888;
+  text-align: right;
+  min-width: 3.5em;
+}
+
+.setting-row input[type="range"] {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 0;
+  accent-color: #c4571a;
+  cursor: pointer;
+}
+
 .gestures {
   margin-top: 10px;
   padding-top: 10px;
