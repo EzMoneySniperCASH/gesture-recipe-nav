@@ -6,6 +6,24 @@
   const SOURCE = "gesture-recipe-nav-page";
   const THRESHOLD = 0.7;
   const HOLD_FRAMES = 4;
+
+  function post(data) {
+    window.postMessage({ source: SOURCE, ...data }, "*");
+  }
+
+  if (window.__GRN_ACTIVE__ || window.__GRN_BOOTING__) {
+    post({ type: "error", message: "Gesture nav already running" });
+    return;
+  }
+  window.__GRN_BOOTING__ = true;
+
+  const cfg = window.__GRN_CONFIG__;
+  if (!cfg?.wasmRoot || !cfg?.modelUrl || !cfg?.visionBundleUrl) {
+    window.__GRN_BOOTING__ = false;
+    post({ type: "error", message: "Missing extension config" });
+    return;
+  }
+
   const COOLDOWN_MS = cfg.sensitivity?.scrollCooldownMs ?? 800;
   const ZOOM_INTERVAL_MS = cfg.sensitivity?.zoomIntervalMs ?? 350;
 
@@ -40,18 +58,6 @@
     Closed_Fist: "closed fist",
   };
 
-  if (window.__GRN_ACTIVE__ || window.__GRN_BOOTING__) {
-    post({ type: "error", message: "Gesture nav already running" });
-    return;
-  }
-  window.__GRN_BOOTING__ = true;
-
-  const cfg = window.__GRN_CONFIG__;
-  if (!cfg?.wasmRoot || !cfg?.modelUrl || !cfg?.visionBundleUrl) {
-    post({ type: "error", message: "Missing extension config" });
-    return;
-  }
-
   let running = false;
   let rafId = 0;
   let previewCanvas = null;
@@ -68,10 +74,6 @@
   window.addEventListener("grn-stop", () => {
     cleanup();
   });
-
-  function post(data) {
-    window.postMessage({ source: SOURCE, ...data }, "*");
-  }
 
   function cleanup() {
     running = false;

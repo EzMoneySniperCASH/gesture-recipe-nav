@@ -515,5 +515,9 @@ toggleBtn.addEventListener("click", async () => {
   } finally {
     toggleBtn.disabled = false;
     starting = false;
+    if (!cameraOn) {
+      toggleBtn.textContent = "Start camera";
+      toggleBtn.dataset.state = "off";
+    }
   }
 });
