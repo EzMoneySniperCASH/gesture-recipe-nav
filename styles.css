@@ -204,24 +204,3 @@ body {
   color: var(--ink-soft);
   font-size: 11px;
 }
-
-.save-log-btn {
-  appearance: none;
-  margin-top: 10px;
-  width: 100%;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--ink-soft);
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.save-log-btn:hover {
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-color: var(--accent);
-}

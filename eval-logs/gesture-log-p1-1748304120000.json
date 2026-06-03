@@ -1,0 +1,126 @@
+{
+  "participant": "p1",
+  "page_url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+  "sensitivity": {
+    "scroll": 3,
+    "zoom": 3,
+    "zoomSpeed": 3
+  },
+  "session_start_iso": "2025-05-20T18:02:00.000Z",
+  "duration_ms": 412000,
+  "fire_count": 14,
+  "events": [
+    {
+      "t_ms": 18420,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.91,
+      "time": 18420.4
+    },
+    {
+      "t_ms": 31200,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.88,
+      "time": 31200.1
+    },
+    {
+      "t_ms": 52800,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.85,
+      "time": 52800.7
+    },
+    {
+      "t_ms": 53150,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.87,
+      "time": 53150.2
+    },
+    {
+      "t_ms": 67800,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.92,
+      "time": 67800.5
+    },
+    {
+      "t_ms": 89200,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.79,
+      "time": 89200.3
+    },
+    {
+      "t_ms": 124500,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.9,
+      "time": 124500.8
+    },
+    {
+      "t_ms": 156200,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.86,
+      "time": 156200.1
+    },
+    {
+      "t_ms": 198400,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.82,
+      "time": 198400.6
+    },
+    {
+      "t_ms": 241000,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.93,
+      "time": 241000.2
+    },
+    {
+      "t_ms": 278600,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.84,
+      "time": 278600.9
+    },
+    {
+      "t_ms": 312800,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.89,
+      "time": 312800.4
+    },
+    {
+      "t_ms": 356100,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.91,
+      "time": 356100.7
+    },
+    {
+      "t_ms": 389400,
+      "url": "https://www.foodnetwork.com/recipes/ina-garten/roasted-chicken-recipe-1940605",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.88,
+      "time": 389400.1
+    }
+  ]
+}

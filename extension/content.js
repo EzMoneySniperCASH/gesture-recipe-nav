@@ -78,7 +78,6 @@ overlay.innerHTML = `
         <li><span class="gesture-icon" aria-hidden="true">🖐</span><span class="gesture-action">Zoom out</span></li>
       </ul>
     </section>
-    <button id="save-log-btn" type="button" class="save-log-btn">Save session log for testing</button>
   </div>
 `;
 shadow.appendChild(overlay);
@@ -93,7 +92,6 @@ previewCtx.fillStyle = "#000";
 previewCtx.fillRect(0, 0, previewEl.width, previewEl.height);
 const statusEl = shadow.getElementById("status");
 const toggleBtn = shadow.getElementById("toggle-btn");
-const saveLogBtn = shadow.getElementById("save-log-btn");
 const scrollSlider = shadow.getElementById("scroll-sensitivity");
 const zoomSlider = shadow.getElementById("zoom-sensitivity");
 const zoomSpeedSlider = shadow.getElementById("zoom-speed-sensitivity");
@@ -345,24 +343,6 @@ function runGestureAction(name) {
   }
 }
 
-let sessionLog = [];
-let sessionStart = 0;
-let participantId = "";
-
-function resetLog() {
-  sessionLog = [];
-  sessionStart = performance.now();
-}
-
-function logEvent(evt) {
-  if (!sessionStart) return;
-  sessionLog.push({
-    t_ms: Math.round(performance.now() - sessionStart),
-    url: location.href,
-    ...evt,
-  });
-}
-
 function setStatus(text, tone = "active") {
   statusEl.textContent = text;
   statusEl.className = "status";
@@ -436,12 +416,6 @@ window.addEventListener("message", (event) => {
 
   if (data.type === "fire") {
     runGestureAction(data.gesture);
-    logEvent({
-      type: "fire",
-      gesture: data.gesture,
-      score: data.score,
-      time: data.time,
-    });
     return;
   }
 
@@ -451,38 +425,6 @@ window.addEventListener("message", (event) => {
     data.bitmap.close();
   }
 });
-
-function downloadLog() {
-  if (!sessionLog.length && !confirm("Log is empty. Download anyway?")) {
-    return;
-  }
-  if (!participantId) {
-    participantId = prompt("Participant ID (used in filename):", "p1") || "anon";
-  }
-  const payload = {
-    participant: participantId,
-    page_url: location.href,
-    sensitivity,
-    session_start_iso: new Date(
-      Date.now() - (performance.now() - sessionStart),
-    ).toISOString(),
-    duration_ms: sessionStart ? Math.round(performance.now() - sessionStart) : 0,
-    fire_count: sessionLog.filter((e) => e.type === "fire").length,
-    events: sessionLog,
-  };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], {
-    type: "application/json",
-  });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `gesture-log-${participantId}-${Date.now()}.json`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(a.href);
-}
-
-saveLogBtn.addEventListener("click", downloadLog);
 
 toggleBtn.addEventListener("click", async () => {
   if (starting) return;
@@ -507,7 +449,6 @@ toggleBtn.addEventListener("click", async () => {
   toggleBtn.textContent = "Loading…";
   setStatus("Loading camera and model…", "active");
   try {
-    resetLog();
     await sendBackground("grn-start");
   } catch (err) {
     showError(err);

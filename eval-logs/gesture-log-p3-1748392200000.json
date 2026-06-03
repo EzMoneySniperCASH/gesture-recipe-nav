@@ -1,0 +1,158 @@
+{
+  "participant": "p3",
+  "page_url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+  "sensitivity": {
+    "scroll": 2,
+    "zoom": 2,
+    "zoomSpeed": 2
+  },
+  "session_start_iso": "2025-05-22T11:30:00.000Z",
+  "duration_ms": 385000,
+  "fire_count": 18,
+  "events": [
+    {
+      "t_ms": 22100,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.72,
+      "time": 22100.4
+    },
+    {
+      "t_ms": 45800,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.68,
+      "time": 45800.1
+    },
+    {
+      "t_ms": 68200,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.71,
+      "time": 68200.8
+    },
+    {
+      "t_ms": 71550,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.74,
+      "time": 71550.2
+    },
+    {
+      "t_ms": 74900,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.69,
+      "time": 74900.6
+    },
+    {
+      "t_ms": 78250,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.73,
+      "time": 78250.1
+    },
+    {
+      "t_ms": 81600,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.7,
+      "time": 81600.5
+    },
+    {
+      "t_ms": 104200,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.75,
+      "time": 104200.3
+    },
+    {
+      "t_ms": 128600,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.67,
+      "time": 128600.9
+    },
+    {
+      "t_ms": 131950,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.7,
+      "time": 131950.4
+    },
+    {
+      "t_ms": 162400,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.78,
+      "time": 162400.7
+    },
+    {
+      "t_ms": 198800,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.71,
+      "time": 198800.2
+    },
+    {
+      "t_ms": 224100,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.73,
+      "time": 224100.6
+    },
+    {
+      "t_ms": 251200,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.76,
+      "time": 251200.1
+    },
+    {
+      "t_ms": 254550,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.72,
+      "time": 254550.8
+    },
+    {
+      "t_ms": 289400,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.79,
+      "time": 289400.3
+    },
+    {
+      "t_ms": 318600,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.74,
+      "time": 318600.5
+    },
+    {
+      "t_ms": 352100,
+      "url": "https://www.seriouseats.com/easy-italian-american-red-sauce-recipe",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.77,
+      "time": 352100.9
+    }
+  ]
+}

@@ -333,24 +333,3 @@
 .gesture-action {
   font-weight: 500;
 }
-
-.save-log-btn {
-  appearance: none;
-  margin-top: 10px;
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: #888;
-  padding: 4px;
-  border-radius: 6px;
-  font-size: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.save-log-btn:hover {
-  color: #c4571a;
-}

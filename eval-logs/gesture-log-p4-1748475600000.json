@@ -1,0 +1,86 @@
+{
+  "participant": "p4",
+  "page_url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+  "sensitivity": {
+    "scroll": 2,
+    "zoom": 3,
+    "zoomSpeed": 4
+  },
+  "session_start_iso": "2025-05-23T16:45:00.000Z",
+  "duration_ms": 298000,
+  "fire_count": 9,
+  "events": [
+    {
+      "t_ms": 31200,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.9,
+      "time": 31200.3
+    },
+    {
+      "t_ms": 58400,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.88,
+      "time": 58400.7
+    },
+    {
+      "t_ms": 58750,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.89,
+      "time": 58750.1
+    },
+    {
+      "t_ms": 94200,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.92,
+      "time": 94200.5
+    },
+    {
+      "t_ms": 128800,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.87,
+      "time": 128800.2
+    },
+    {
+      "t_ms": 171400,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.83,
+      "time": 171400.8
+    },
+    {
+      "t_ms": 208600,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.91,
+      "time": 208600.4
+    },
+    {
+      "t_ms": 248200,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.86,
+      "time": 248200.6
+    },
+    {
+      "t_ms": 251550,
+      "url": "https://www.bbcgoodfood.com/recipes/easy-pancakes",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.84,
+      "time": 251550.2
+    }
+  ]
+}

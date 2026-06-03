@@ -3,7 +3,6 @@ import { initGestureNav } from "./gesture-nav.js";
 const previewEl = document.getElementById("preview");
 const statusEl = document.getElementById("status");
 const toggleBtn = document.getElementById("toggle-btn");
-const saveLogBtn = document.getElementById("save-log-btn");
 
 /* -------------------------------------------------------------------------- */
 /* Recipe interactions                                                        */
@@ -43,9 +42,6 @@ function setActiveStep(el) {
   if (currentActiveStep) currentActiveStep.classList.remove("is-active");
   if (el) el.classList.add("is-active");
   currentActiveStep = el;
-  if (el) {
-    logEvent({ type: "step", step: Number(el.dataset.step) });
-  }
 }
 
 const stepObserver = new IntersectionObserver(
@@ -79,60 +75,6 @@ const stepObserver = new IntersectionObserver(
 steps.forEach((el) => stepObserver.observe(el));
 
 /* -------------------------------------------------------------------------- */
-/* Session logging                                                            */
-/*                                                                            */
-/* In-memory log of every gesture fire + step change during a single camera   */
-/* session. Reset on each Start. Downloadable as JSON via the overlay button. */
-/* -------------------------------------------------------------------------- */
-
-let sessionLog = [];
-let sessionStart = 0;
-let participantId = "";
-
-function resetLog() {
-  sessionLog = [];
-  sessionStart = performance.now();
-}
-
-function logEvent(evt) {
-  if (!sessionStart) return; // not in a session
-  sessionLog.push({
-    t_ms: Math.round(performance.now() - sessionStart),
-    ...evt,
-  });
-}
-
-function downloadLog() {
-  if (!sessionLog.length) {
-    if (!confirm("Log is empty. Download anyway?")) return;
-  }
-  if (!participantId) {
-    participantId = prompt("Participant ID (used in filename):", "p1") || "anon";
-  }
-  const payload = {
-    participant: participantId,
-    session_start_iso: new Date(
-      Date.now() - (performance.now() - sessionStart),
-    ).toISOString(),
-    duration_ms: Math.round(performance.now() - sessionStart),
-    fire_count: sessionLog.filter((e) => e.type === "fire").length,
-    events: sessionLog,
-  };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], {
-    type: "application/json",
-  });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = `gesture-log-${participantId}-${Date.now()}.json`;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(a.href);
-}
-
-saveLogBtn.addEventListener("click", downloadLog);
-
-/* -------------------------------------------------------------------------- */
 /* Camera toggle                                                              */
 /* -------------------------------------------------------------------------- */
 
@@ -156,7 +98,6 @@ toggleBtn.addEventListener("click", async () => {
       nav = await initGestureNav({
         previewEl,
         statusEl,
-        onEvent: logEvent,
         actions: {
           Thumb_Up: () => scrollByViewport(-1),
           Thumb_Down: () => scrollByViewport(1),
@@ -173,7 +114,6 @@ toggleBtn.addEventListener("click", async () => {
         },
       });
     }
-    resetLog();
     await nav.start();
     toggleBtn.textContent = "Stop camera";
     toggleBtn.dataset.state = "on";

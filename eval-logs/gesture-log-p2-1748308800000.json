@@ -1,0 +1,190 @@
+{
+  "participant": "p2",
+  "page_url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+  "sensitivity": {
+    "scroll": 4,
+    "zoom": 3,
+    "zoomSpeed": 3
+  },
+  "session_start_iso": "2025-05-21T14:15:00.000Z",
+  "duration_ms": 528000,
+  "fire_count": 22,
+  "events": [
+    {
+      "t_ms": 12100,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.94,
+      "time": 12100.2
+    },
+    {
+      "t_ms": 14800,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.91,
+      "time": 14800.5
+    },
+    {
+      "t_ms": 17200,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.76,
+      "time": 17200.8
+    },
+    {
+      "t_ms": 24500,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.89,
+      "time": 24500.1
+    },
+    {
+      "t_ms": 26800,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.92,
+      "time": 26800.4
+    },
+    {
+      "t_ms": 42100,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.87,
+      "time": 42100.6
+    },
+    {
+      "t_ms": 61200,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.81,
+      "time": 61200.3
+    },
+    {
+      "t_ms": 63800,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.78,
+      "time": 63800.9
+    },
+    {
+      "t_ms": 89400,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.83,
+      "time": 89400.2
+    },
+    {
+      "t_ms": 89750,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.85,
+      "time": 89750.7
+    },
+    {
+      "t_ms": 90100,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.84,
+      "time": 90100.1
+    },
+    {
+      "t_ms": 90450,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Closed_Fist",
+      "score": 0.86,
+      "time": 90450.5
+    },
+    {
+      "t_ms": 112200,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.9,
+      "time": 112200.8
+    },
+    {
+      "t_ms": 145600,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.88,
+      "time": 145600.4
+    },
+    {
+      "t_ms": 178900,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.74,
+      "time": 178900.2
+    },
+    {
+      "t_ms": 212400,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.91,
+      "time": 212400.6
+    },
+    {
+      "t_ms": 256800,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.86,
+      "time": 256800.1
+    },
+    {
+      "t_ms": 298200,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.79,
+      "time": 298200.9
+    },
+    {
+      "t_ms": 301550,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Open_Palm",
+      "score": 0.81,
+      "time": 301550.3
+    },
+    {
+      "t_ms": 342100,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.93,
+      "time": 342100.7
+    },
+    {
+      "t_ms": 401500,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Down",
+      "score": 0.89,
+      "time": 401500.2
+    },
+    {
+      "t_ms": 468200,
+      "url": "https://www.allrecipes.com/recipe/24074/alysias-basic-meat-lasagna/",
+      "type": "fire",
+      "gesture": "Thumb_Up",
+      "score": 0.85,
+      "time": 468200.5
+    }
+  ]
+}
